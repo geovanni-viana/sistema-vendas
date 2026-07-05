@@ -1,4 +1,5 @@
 {
+  "id": "/sistema-vendas/",
   "name": "Sistema de Vendas",
   "short_name": "Vendas",
   "description": "Controle simples de estoque e vendas, no estilo de um livro-caixa.",
