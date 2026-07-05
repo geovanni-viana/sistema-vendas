@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistema de Vendas</title>
+<meta name="description" content="Controle simples de estoque e vendas, no estilo de um livro-caixa.">
+<meta name="theme-color" content="#1B4332">
+
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+    <div class="topbar-inner">
+        <span class="brand-mark">SV</span>
+        <div class="brand-text">
+            <h1>Sistema de Vendas</h1>
+            <p>Caderno de estoque e vendas</p>
+        </div>
+    </div>
+</header>
+
+<main class="layout">
+
+    <section class="card" aria-labelledby="titulo-cadastro">
+        <div class="card-head">
+            <span class="card-index">Registro 1</span>
+            <h2 id="titulo-cadastro">Cadastrar Produto</h2>
+        </div>
+        <form id="formCadastro" class="card-body" onsubmit="return false;">
+            <label class="field">
+                <span>ID do produto</span>
+                <input type="text" id="pId" placeholder="Ex.: 001" inputmode="numeric" pattern="\d*" autocomplete="off" required>
+            </label>
+            <label class="field">
+                <span>Nome</span>
+                <input type="text" id="pNome" placeholder="Ex.: Caderno universitário" required>
+            </label>
+            <label class="field">
+                <span>Quantidade</span>
+                <input type="number" id="pQtd" min="0" step="1" inputmode="numeric" placeholder="0" required>
+            </label>
+            <label class="field">
+                <span>Preço (R$)</span>
+                <input type="number" id="pPreco" min="0" step="0.01" placeholder="0,00" required>
+            </label>
+            <button type="submit" class="btn btn-primary" onclick="cadastrar()">Cadastrar</button>
+        </form>
+    </section>
+
+    <section class="card" aria-labelledby="titulo-venda">
+        <div class="card-head">
+            <span class="card-index">Registro 2</span>
+            <h2 id="titulo-venda">Registrar Venda</h2>
+        </div>
+        <form id="formVenda" class="card-body" onsubmit="return false;">
+            <label class="field">
+                <span>ID do produto</span>
+                <input type="text" id="vId" placeholder="Ex.: 001" inputmode="numeric" pattern="\d*" autocomplete="off" required>
+            </label>
+            <label class="field">
+                <span>Quantidade</span>
+                <input type="number" id="vQtd" min="1" step="1" inputmode="numeric" placeholder="0" required>
+            </label>
+            <button type="submit" class="btn btn-accent" onclick="vender()">Confirmar Venda</button>
+        </form>
+    </section>
+
+    <section class="card card-wide" aria-labelledby="titulo-estoque">
+        <div class="card-head">
+            <span class="card-index">Livro-caixa</span>
+            <h2 id="titulo-estoque">Estoque</h2>
+        </div>
+        <div class="table-wrap">
+            <table id="tabelaEstoque">
+                <thead>
+                    <tr><th>ID</th><th>Nome</th><th>Qtd</th><th>Preço</th></tr>
+                </thead>
+                <tbody id="corpoEstoque">
+                    <tr class="empty-row"><td colspan="4">Nenhum produto cadastrado ainda.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+</main>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<footer class="footer">
+    <p>Sistema de Vendas &middot; funciona offline &middot; dados salvos neste dispositivo</p>
+</footer>
+
+<script src="js/storage.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
